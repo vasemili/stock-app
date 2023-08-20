@@ -4,12 +4,44 @@ body {
 }
 
 header, footer {
-    background-color: #333;
-    color: #fff;
+    background-color: #15293F;
+    color: #FFFFFE;
     padding: 1em;
 }
 
 #kean-logo {
     width: 150px; /* Or whatever size you want */
     margin: 10px; /* Space around the logo */
+}
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Initial state hidden */
+    height: 100%;
+    width: 250px;
+    background-color: #333;
+    transition: 0.3s; /* Smooth slide effect */
+    padding-top: 60px; /* Space for the toggle button */
+    z-index: 2; /* Make sure the sidebar is on top */
+}
+
+#sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s; /* Smooth hover effect */
+}
+
+#sidebar a:hover {
+    color: #f1f1f1;
+}
+
+#sidebarToggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 3; /* Make sure the button is on top of sidebar */
 }
