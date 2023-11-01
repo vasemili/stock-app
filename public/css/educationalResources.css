@@ -1,0 +1,47 @@
+.resource-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+  margin-left:50px;
+  margin-right:50px;
+}
+
+.card {
+  width: calc(33.333% - 20px); /* For a three-column layout with gap considered */
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card a {
+  font-weight: bold;
+  display: block;
+  margin: 15px 0;
+}
+
+.card p {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.intro-head {
+  margin-left: 20px;  /* Adjust this value based on your preference */
+}
+
+.intro-text {
+  margin-left: 40px;  /* Adjust this value based on your preference */
+  margin-right: 30px;
+}

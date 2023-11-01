@@ -63,9 +63,9 @@ footer {
 
 #sidebar {
     position: fixed;
-    top: 0;
+    top: 78px;
     left: -250px; /* Initial state hidden */
-    height: 100%;
+    height: calc(100% - 83px - 30px);
     width: 250px;
     background-color: #0f1e2e;
     transition: 0.3s; /* Smooth slide effect */
@@ -120,4 +120,30 @@ footer {
 .sidebar-opened #sidebarToggle {
     left: 250px;   /* This is sidebar's width minus the width of the toggle button */
     transform: translateY(-50%) rotate(180deg);
+}
+
+.centered {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 800px; /* Adjust the maximum width as needed */
+}
+
+.centered-image {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%; /* Ensure the image scales down if it's larger than the container */
+    height: auto; /* Maintain the image's aspect ratio */
+}
+
+.features ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+.features li {
+    margin-bottom: 10px; /* Adjust the margin as needed to reduce the vertical space between list items */
+}
+
+.get-started {
+    margin-top: 20px; /* Adjust the margin to control the space between the features and the "Ready to get started?" section */
 }

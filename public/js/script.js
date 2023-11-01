@@ -1,3 +1,4 @@
+// Your existing vanilla JavaScript code for the sidebar toggle
 document.getElementById("sidebarToggle").addEventListener("click", function() {
     const sidebar = document.getElementById("sidebar");
     const body = document.querySelector('body');
