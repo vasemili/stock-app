@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, render_template, request, redirect, url_for, jsonify, flash
 from flask_pymongo import PyMongo
 import plotly.graph_objs as go
 import yfinance as yf
 import datetime
 import os
 import openai
+import requests
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -14,11 +15,16 @@ app = Flask(__name__, static_folder="../public", template_folder="../templates")
 
 openai_api_key = os.getenv('OpenAI_key')
 mongodb_uri = os.getenv('MongoDB_URI')
+fin_map_key = os.getenv('Fin_Map_key')
 
 # MongoDB Configuration
 app.config['OPENAI_API_KEY'] = openai_api_key
 
 app.config['MONGO_URI'] = mongodb_uri
+
+app.config['FIN_MAP_KEY'] = fin_map_key
+
+app.secret_key = os.getenv('SECRET_KEY')
 
 mongo = PyMongo(app)
 
@@ -97,18 +103,37 @@ def fetch_stock_data(ticker_symbol, start_date, end_date):
     
     return df_main, df_future, candlestick_chart
 
-@app.route('/interactive-analysis')
+def get_ticker_symbol(company_name, api_key):
+    url = f'https://financialmodelingprep.com/api/v3/search?query={company_name}&limit=1&exchange=NASDAQ&apikey={api_key}'
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+        if data:
+            return data[0]['symbol']  # Assuming the first result is the most relevant
+    return None
+
+@app.route('/interactive-analysis', methods=['GET', 'POST'])
 def interactive_analysis():
-    companies = ["NVDA", "TSLA", "FDX", "ABNB", "AAPL", "GOOG", "ORCL", "IBM", "MSFT"]
-    end_date = datetime.date.today()
-    start_date = end_date - datetime.timedelta(days=180)
-    all_candlestick_charts = {}
+    candlestick_chart = None
+    api_key = fin_map_key
 
-    for company in companies:
-        df_main, _, candlestick_chart = fetch_stock_data(company, start_date, end_date)
-        all_candlestick_charts[company] = candlestick_chart
+    if request.method == 'POST':
+        input_value = request.form.get('company_name').strip()
 
-    return render_template("interactive-analysis.html", candlestick_charts=all_candlestick_charts)
+        # Convert company name to ticker symbol using FMP API
+        ticker_symbol = get_ticker_symbol(input_value, api_key)
+        if ticker_symbol is None:
+            flash('Unable to find ticker for the given company name.', 'error')
+            return render_template("interactive-analysis.html", candlestick_chart=None)
+
+        end_date = datetime.date.today()
+        start_date = end_date - datetime.timedelta(days=180)
+        try:
+            df_main, _, candlestick_chart = fetch_stock_data(ticker_symbol, start_date, end_date)
+        except Exception as e:
+            flash(f'Error fetching data for {ticker_symbol}: {str(e)}', 'error')
+
+    return render_template("interactive-analysis.html", candlestick_chart=candlestick_chart)
 
 if __name__ == "__main__":
     db.create_all()  # This will create the required tables in the database.
