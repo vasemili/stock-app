@@ -177,24 +177,45 @@ header h2 {
   visibility: visible;
 }
 
+.chatbox .chat:first-child {
+  margin-top: 50px; /* Increase this value as needed */
+}
+
 @media (max-width: 490px) {
   .chatbot-toggler {
     right: 20px;
     bottom: 20px;
   }
   .chatbot {
+    /* Adjust the overall chatbot sizing and positioning */
     right: 0;
     bottom: 0;
-    height: 100%;
+    height: auto; /* Change to auto for flexible height */
+    max-height: 90%; /* Maximum height to ensure it doesn't cover the entire screen */
     border-radius: 0;
     width: 100%;
   }
+
   .chatbot .chatbox {
-    height: 90%;
-    padding: 25px 15px 100px;
+      /* Adjust the chatbox height */
+      height: calc(100% - 120px); /* Adjust the height dynamically */
+      padding: 25px 15px 75px; /* Adjust bottom padding to give space for the input */
   }
+
   .chatbot .chat-input {
-    padding: 5px 15px;
+      /* Adjust the text area size and positioning */
+      padding: 5px 15px;
+      position: fixed; /* Make it fixed at the bottom of the chatbot */
+      bottom: 60; /* Align it to the bottom */
+      left: 0; /* Align it to the left */
+      width: 100%; /* Full width */
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a shadow for depth */
+  }
+
+  .chat-input textarea {
+      /* Adjust textarea sizing */
+      height: 60px; /* Reduce the default height */
+      max-height: 180px; /* Limit the maximum expandable height */
   }
   .chatbot header span {
     display: block;

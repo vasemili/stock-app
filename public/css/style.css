@@ -14,6 +14,7 @@ body {
 header {
     position: absolute;
     width: 100%;
+    height: 100px;
     padding: 0;
     background-color: #15293F;
     color: #FFFFFE;
@@ -22,6 +23,7 @@ header {
     align-items: center;
     justify-content: space-between;
     z-index: 5;
+    padding-bottom:40px;
 }
 
 .header-content {
@@ -29,6 +31,11 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 0 1em;
+    flex-direction: column;
+}
+
+.main-content {
+    padding-top: 120px; /* Additional space for smaller screens */
 }
 
 /* Footer styles */
@@ -62,72 +69,10 @@ footer {
     margin: 10px;
 }
 
-/* Sidebar styles */
-#sidebar {
-    position: fixed;
-    top: 0px;
-    left: -250px;
-    height: calc(100% - 40px);
-    width: 250px;
-    background-color: #0f1e2e;
-    transition: 0.3s;
-    padding-top: 160px;
-    z-index: 2;
-}
-
-.sidebar-opened #sidebar {
-    box-shadow: 3px 0px 15px rgba(0, 0, 0, 0.4);
-}
-
-#sidebar a {
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 25px;
-    color: white;
-    display: block;
-    transition: 0.3s;
-    border-radius: 4px;
-}
-
-#sidebar a:hover {
-    color: #f1f1f1;
-    background-color: rgba(255, 255, 255, 0.1);
-    transform: translateX(10px);
-}
-
-#sidebarToggle {
-    position: fixed;
-    top: 50%;
-    left: -15px;
-    transform: translateY(-50%);
-    background-color: #0f1e2e;
-    color: #FFFFFF;
-    border: none;
-    font-size: 2em;
-    padding: 10px 20px;
-    cursor: pointer;
-    z-index: 3;
-    transition: 0.3s left;
-}
-
-#sidebarToggle:hover {
-    background-color: #1a3550;
-}
-
-#sidebarToggle:focus {
-    outline: none;
-}
-
-.sidebar-opened #sidebarToggle {
-    left: 250px;
-    transform: translateY(-50%) rotate(180deg);
-}
-
 .centered {
     text-align: center; /* Center-aligns text for all elements within */
     margin: 0 auto; /* Centers the block itself */
-    max-width: 800px; /* Adjust this value as needed */
-    padding: 20px; /* Adds padding around the content */
+    max-width: 700px; /* Adjust this value as needed */
     margin-bottom: 40px;
 }
 
@@ -141,7 +86,7 @@ footer {
 .features ul, .get-started p {
     text-align: left; /* Aligns text to the left within the centered block */
     margin: 0 auto; /* Centers the text block */
-    max-width: 600px; /* Adjust this value as needed */
+    max-width: 700px; /* Adjust this value as needed */
 }
 
 .features h2, .get-started h2 {
@@ -154,27 +99,25 @@ footer {
 }
 
 .get-started {
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 60px;
 }
 
 .home-intro {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
 }
 
 .intro-text {
     flex: 1; /* Takes up the remaining space */
     text-align: center; /* Center-aligns the text */
-    padding: 0 10px; /* Adds padding on both sides */
 }
 
 .intro-text h1, 
 .intro-text p {
-    margin: 0 auto; /* Centers the content and removes any default margins */
-    margin-top: 60px;
-    max-width: 600px; /* You can adjust this value as needed */
+    margin: auto; /* Centers the content and removes any default margins */
+    max-width: 700px; /* You can adjust this value as needed */
 }
 
 .start-btn {
@@ -189,14 +132,17 @@ footer {
 .start-btn:hover {
     background-color: #4a9fb1;
 }
+.glossary_before {
+    text-align: center;
+}
 
 .glossary {
-    padding: 50px;
+    padding: 30px;
+    padding-bottom: 50px;
 }
 
 .glossary h1 {
     text-align: center;
-    margin-top: 30px;
     margin-bottom: 30px;
 }
 
@@ -216,15 +162,12 @@ footer {
 }
 
 .history-section {
-    margin: 0px auto;
-    max-width: 800px;
+    max-width: 700px;
     font-size: 16px;
-    padding-top: 80px;
 }
 
 .history-section h1 {
     text-align: center;
-    margin-bottom: 40px;
 }
 
 .intro {
@@ -262,7 +205,6 @@ footer {
 }
 
 .feedback-section {
-    padding: 20px;
     margin: 0 auto;
     max-width: 600px;
     font-size: 16px;
@@ -271,19 +213,17 @@ footer {
 
 .feedback-section h1 {
     text-align: center;
-    padding-top: 70px;
     margin-bottom: 30px;
 }
 
 .feedback-confirmation-section {
     text-align: center; /* Center-aligns text for all elements within */
     margin: 0 auto; /* Centers the block itself */
-    max-width: 800px; /* You can adjust this value as needed */
+    max-width: 600px; /* You can adjust this value as needed */
     padding: 20px; /* Adds padding around the content */
 }
 
 .feedback-confirmation-section h1 {
-    margin-top: 60px; /* Adds space above the heading */
     margin-bottom: 30px; /* Adds space below the heading */
 }
 
@@ -399,9 +339,8 @@ footer {
 
 .intro-head{
     text-align: center; /* Center-aligns the text */
-    margin: 60px auto; /* Adds top and bottom margin */
-    max-width: 800px; /* You can adjust this value as needed */
-    margin-top: 70px;
+    margin:auto; /* Adds top and bottom margin */
+    max-width: 700px; /* You can adjust this value as needed */
 }
 
 .resource-cards {
@@ -448,11 +387,9 @@ footer {
 
 .interactive-analysis {
     text-align: center; /* Center-aligns the text */
-    padding: 30px; /* Adds padding around the content */
     max-width: 800px; /* You can adjust this value as needed */
     margin-left: auto; /* Centers the block horizontally */
     margin-right: auto;
-    padding-top: 80px;
 }
 
 .interactive-analysis button {
@@ -485,4 +422,309 @@ footer {
     padding: 2px; /* Adds internal space */
     font-size: 1.1em; /* Increases the font size */
     margin-bottom: 20px; /* Adds space below the input field */
+}
+
+.login-wrapper, .register-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    /* No 'top' or 'margin' property needed here */
+}
+
+.login-form .form-group {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.login-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login-form .form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-form .submit-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-form .submit-button:hover {
+    background-color: #0056b3;
+}
+
+.user-auth-links {
+    position: absolute;
+    bottom: 0px; /* adjust as needed */
+    right: 20px;
+}
+
+.user-auth-links a:nth-child(1),
+.user-auth-links a:nth-child(2) {
+    font-size: 14px; /* Reduced font size */
+    position: relative;
+    top: -7px; /* Move up by 5px */
+}
+
+/* Dropdown Menu Styles */
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.user-dropdown .dropbtn {
+    background-color: #15293F;
+    color: white;
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.user-dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #15293F;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.user-dropdown .dropdown-content a {
+    color: black;
+    padding: 0px 16px;
+    padding-top: 10px;
+    text-decoration: none;
+    display: block;
+}
+
+.user-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.user-dropdown:hover .dropbtn {
+    background-color: #1a3a58;
+}
+
+.navigation-controls {
+    display: flex;
+    align-items: center;
+}
+
+.user-auth-links {
+    margin-right: auto; /* Pushes the user links to the right */
+}
+
+.main-nav {
+    display: flex;
+    margin-left: 20px; /* Adjust spacing as needed */
+}
+
+.main-nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0 10px;
+    font-size: 14px;
+}
+
+.header-top{
+    width: 100%; /* Ensure full width */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 1em;
+    margin-top:20px;
+}
+
+.header-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 1em;
+}
+
+/* Unvisited link */
+.user-auth-links a:link {
+    color: #FFFFFF; /* Example: White color for unvisited links */
+}
+
+/* Visited link */
+.user-auth-links a:visited {
+    color: #D3D3D3; /* Example: Light grey color for visited links */
+}
+
+/* Link on hover */
+.user-auth-links a:hover {
+    color: #ADD8E6; /* Example: Light blue color on hover */
+}
+
+/* Selected link */
+.user-auth-links a:active {
+    color: #00BFFF; /* Example: Bright blue color when the link is clicked */
+}
+
+@media screen and (max-width: 768px) {
+    .main-content {
+        padding-top: 210px; /* Additional space for smaller screens */
+    }
+    header {
+        height: auto; /* Adjust height for smaller screens */
+        padding: 10px; /* Reduce padding */
+    }
+
+    .header-content {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center-align items */
+    }
+
+    .app-title {
+        font-size: 1.2em; /* Reduce font size for title */
+        margin: 10px 0; /* Adjust margin for title */
+    }
+
+    #kean-logo {
+        width: 80px; /* Reduce logo size */
+    }
+
+    .main-nav {
+        margin: 10px 0;
+        text-decoration: none;
+        padding: 10px 15px; /* Adjust padding for links */
+        margin: 0 5px; /* Space between links */
+        font-size: 16px; /* Adjust font size as needed */
+    }
+
+    .main-nav a {
+        padding: 5px; /* Reduce padding for nav links */
+        font-size: 12px; /* Reduce font size */
+    }
+
+    .user-auth-links {
+        margin-top: 10px; /* Add space above auth links */
+    }
+
+    .user-auth-links a {
+        font-size: 10px; /* Reduce font size for auth links */
+        padding: 3px; /* Reduce padding */
+    }
+
+    /* Adjusting dropdown menu for smaller screens */
+    .user-dropdown .dropdown-content {
+        left: -50%; /* Adjust dropdown position */
+    }
+}
+
+.alert {
+    color: red; /* Example: red text for error messages */
+    margin-bottom: 10px; /* Space below the alert */
+    /* Additional styling as needed */
+}
+
+.error-message {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+.flashes li {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+/* Resend Verification Button Styles */
+#resend-verification {
+    background-color: #007bff; /* Blue background color */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 15px; /* Padding around the text */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 0.9rem; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-top: 10px; /* Margin from the top */
+    display: inline-block; /* For margin to take effect */
+    text-align: center; /* Center the text */
+    transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+#resend-verification:hover {
+    background-color: #0056b3; /* Darker shade of blue on hover */
+}
+
+.scrape-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.info-message {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+.summary-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-bottom: 50px;
+}
+
+.hamburger-menu {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #009bff;
+    background-color: #0056b3;
+}
+
+@media screen and (max-width: 600px) {
+    .hamburger-menu {
+        display: block;
+        position: absolute; /* Position the menu absolutely within the header */
+        right: -240px; /* Align to the right, with a bit of margin */
+        bottom:-15px;
+    }
+
+    .main-nav {
+        display: none; /* Hide the navigation links on smaller screens */
+    }
+
+    .main-nav.responsive {
+        display: block; /* Make sure this displays the navigation */
+    }
+
+    .header-top .app-title {
+        display: none;
+    }
+
+    .header-top {
+        position: relative; /* Ensure the parent container is positioned relatively */
+    }
+
+    .user-auth-links {
+        position: absolute;
+        right: 20px; /* Adjust this based on the size of the hamburger menu */
+        top: 8px;
+    }
 }
