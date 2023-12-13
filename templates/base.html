@@ -5,7 +5,6 @@
     <meta name="sentry-trace" content="cf49ea14a4e64008aa6f33606507122d-d9a6151d06aa7b88-0"/>
     <title>Stocks Education</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
     
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
@@ -22,34 +21,54 @@
 <body>
     <header>
         <div class="header-content">
-            <img src="{{ url_for('static', filename='images/kean-logo.svg') }}" alt="Kean Logo" id="kean-logo">
-            <span class="app-title">Educational Stocks App</span>
+            <div class="header-top">
+                <img src="{{ url_for('static', filename='images/kean-logo.svg') }}" alt="Kean Logo" id="kean-logo">
+                <span class="app-title">Educational Stocks App</span>
+                <button class="hamburger-menu">&#9776;</button> <!-- Hamburger Icon -->
+            </div>
+
+            <div class="header-bottom">
+                <!-- Navigation Links -->
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/glossary">Glossary</a>
+                    <a href="/educational-resources">Education Resources</a>
+                    <a href="/interactive-analysis">Interactive Analysis</a>
+                    <a href="/history-of-stocks">History Of Stocks</a>
+                    <a href="/user-feedback-and-review">User Feedback</a>
+                    <a href="/article_scraper">Web Scraper</a>
+                </nav>
+
+                <div class="user-auth-links">
+                    {% if 'username' in session %}
+                        <div class="user-dropdown">
+                            <button class="dropbtn">{{ session['username'] }}</button>
+                            <div class="dropdown-content">
+                                <a href="{{ url_for('logout') }}">Logout</a>
+                            </div>
+                        </div>
+                    {% else %}
+                        <a href="{{ url_for('login') }}">Login</a>
+                        <a href="{{ url_for('register') }}">Register</a>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </header>
     
-    {% block content %}
-    {% endblock %}
-    <!-- Toggle Button -->
-    <button id="sidebarToggle">&gt;</button>
-
-    <!-- Sidebar -->
-    <aside id="sidebar">
-        <a href="/">Home</a>
-        <a href="/glossary">Glossary</a>
-        <a href="/educational-resources">Education Resources</a>
-        <a href="/interactive-analysis">Interactive Analysis</a>
-        <a href="/history-of-stocks">History Of Stocks</a>
-        <a href="/user-feedback-and-review">User Feedback</a>
-    </aside>
+    <div class="main-content">
+        {% block content %}
+        {% endblock %}
+    </div>
 
     <!-- Chatbot Section -->
     <button class="chatbot-toggler">
-        <span class="material-symbols-rounded">mode_comment</span>
+        <span class="material-symbols-rounded">Chat</span>
         <span class="material-symbols-outlined">close</span>
     </button>
     <div class="chatbot">
         <header>
-            <h2>Chatbot</h2>
+            <h2>Stock Chatbot</h2>
             <span class="close-btn material-symbols-outlined">close</span>
         </header>
         <ul class="chatbox">
@@ -65,8 +84,8 @@
     <footer>
         Author: Emilio Vasquez
     </footer>
-    
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
     <script type="module" src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='js/hamburger.js') }}"></script>
 </body>
 </html>
