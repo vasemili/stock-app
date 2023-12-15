@@ -55,10 +55,10 @@ Contributions to the Educational Stock App are welcome. Please follow these step
 6. Open a pull request.
 
 ## License
-This project is licensed under the [Your License] - see the LICENSE file for details.
+This is just my own project
 
 ## Contact
-- Project Link: [Repository URL]
-- Your Email
-- Any other contact information
+- Project Link: https://github.com/vasemili/stock-app
+- emiliovasquezcarbajalalexander@gmail.com
+- (908) 937-8231
 
